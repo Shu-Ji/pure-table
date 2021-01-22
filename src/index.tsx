@@ -1,5 +1,4 @@
 import {h, render} from 'preact';
-import {TableProps} from 'rc-table/es/Table';
 
 import PureTableApp, {PureTableAppProps} from './app';
 

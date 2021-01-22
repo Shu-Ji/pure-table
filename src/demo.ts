@@ -34,7 +34,7 @@ const data = [
     {name: 'Rose', age: 36, address: 'some where', key: '2'},
 ];
 
-const pure_table = new PureTable('#table-mount-point', {
+new PureTable('#table-mount-point', {
     rc_table_props: {
         id: 'my-table',
         data,

@@ -18,7 +18,12 @@ const ResizableTitle = (props: ResizableProps) => {
     const {onResize, width, ...rest_props} = props;
 
     return (
-        <Resizable width={width} height={0} onResize={onResize}>
+        <Resizable
+            width={width}
+            height={0}
+            onResize={onResize}
+            resizeHandles={['e']}
+        >
             <th {...rest_props} />
         </Resizable>
     );
