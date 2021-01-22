@@ -1,15 +1,16 @@
 {
     "scripts": {
         "dev": "snowpack dev",
-        "build": "npm-run-all build:snowpack build:declarations",
+        "build": "npm-run-all -p build:snowpack build:declarations",
         "build:snowpack": "snowpack build",
-        "build:declarations": "tsc --declaration --emitDeclarationOnly --declarationDir build/dist",
+        "build:declarations": "tsc --declaration --emitDeclarationOnly --declarationDir dist/pure-table",
         "test": "web-test-runner \"src/**/*.test.tsx\"",
         "format": "prettier --write \"src/**/*.{js,jsx}\"",
         "lint": "prettier --check \"src/**/*.{js,jsx}\""
     },
     "dependencies": {
-        "preact": "^10.5.11"
+        "preact": "^10.5.11",
+        "rc-table": "^7.12.3"
     },
     "devDependencies": {
         "@prefresh/snowpack": "^3.0.0",
@@ -19,6 +20,7 @@
         "npm-run-all": "^4.1.5",
         "prettier": "^2.0.5",
         "snowpack": "^3.0.1",
+        "snowpack-plugin-less": "^1.0.5",
         "typescript": "^4.0.3"
     },
     "husky": {

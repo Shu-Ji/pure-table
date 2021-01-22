@@ -1,25 +1,19 @@
-/** @type {import("snowpack").SnowpackUserConfig } */
 module.exports = {
     mount: {
         public: '/',
-        src: {url: '/dist'},
+        src: '/pure-table',
     },
-    plugins: ['@snowpack/plugin-typescript', '@prefresh/snowpack'],
-    routes: [
-        /* Enable an SPA Fallback in development: */
-        // {"match": "routes", "src": ".*", "dest": "/index.html"},
+    plugins: [
+        '@snowpack/plugin-typescript',
+        '@prefresh/snowpack',
+        'snowpack-plugin-less',
     ],
+
+    alias: {
+        react: 'preact/compat',
+        'react-dom': 'preact/compat',
+    },
     buildOptions: {
-        out: 'build',
-    },
-    optimize: {
-        /* Example: Bundle your final build: */
-        // "bundle": true,
-    },
-    packageOptions: {
-        /* ... */
-    },
-    devOptions: {
-        /* ... */
+        out: 'dist',
     },
 };

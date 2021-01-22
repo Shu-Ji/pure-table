@@ -1,26 +1,15 @@
 import {h, render} from 'preact';
+import {TableProps} from 'rc-table/es/Table';
 
-import PureTableApp from './pure-table';
+import PureTableApp from './app';
 
-export default class PureTable {
-    readonly option: PureTableOption;
-
-    constructor(option: PureTableOption) {
-        this.option = option;
-        this._render();
-    }
-
-    private _render() {
-        const el = document.querySelector(this.option.el);
-        if (el) {
-            render(<PureTableApp />, document.querySelector(this.option.el)!);
+export default class PureTable<RecordType = unknown> {
+    constructor(el: string, option: TableProps<RecordType>) {
+        const _el = document.querySelector(el);
+        if (_el) {
+            render(<PureTableApp {...option} />, _el);
         } else {
             console.error('el does not exist');
         }
     }
-}
-
-export interface PureTableOption {
-    // Table mount point
-    el: string;
 }
