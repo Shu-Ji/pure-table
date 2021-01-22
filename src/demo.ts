@@ -1,5 +1,3 @@
-import {ColumnType} from 'rc-table/es/interface';
-import {ColumnProps} from 'rc-table/es/sugar/Column';
 import PureTable from './index';
 
 const columns = [
@@ -37,7 +35,9 @@ const data = [
 ];
 
 const pure_table = new PureTable('#table-mount-point', {
-    id: 'my-table',
-    data,
-    columns,
+    rc_table_props: {
+        id: 'my-table',
+        data,
+        columns,
+    },
 });

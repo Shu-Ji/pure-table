@@ -1,13 +1,13 @@
 import {h, render} from 'preact';
 import {TableProps} from 'rc-table/es/Table';
 
-import PureTableApp from './app';
+import PureTableApp, {PureTableAppProps} from './app';
 
 export default class PureTable<RecordType = unknown> {
-    constructor(el: string, option: TableProps<RecordType>) {
+    constructor(el: string, rc_table_props: PureTableAppProps<RecordType>) {
         const _el = document.querySelector(el);
         if (_el) {
-            render(<PureTableApp {...option} />, _el);
+            render(<PureTableApp {...rc_table_props} />, _el);
         } else {
             console.error('el does not exist');
         }
