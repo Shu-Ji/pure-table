@@ -6,6 +6,7 @@ module.exports = {
     plugins: [
         '@snowpack/plugin-typescript',
         '@prefresh/snowpack',
+        '@snowpack/plugin-postcss',
         'snowpack-plugin-less',
     ],
 
