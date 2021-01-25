@@ -1,10 +1,10 @@
-import {TableProps} from 'antd/es/table';
 import {h} from 'preact';
-import {useState} from 'preact/hooks';
+import {useEffect, useState} from 'preact/hooks';
+import Table from 'antd/es/table';
+import {TableProps} from 'antd/es/table/Table';
 
 import * as React from 'react';
 import {Resizable, ResizableProps, ResizeCallbackData} from 'react-resizable';
-import {Button, Table} from 'antd';
 
 export interface PureTableAppProps<RecordType> {
     rc_table_props: TableProps<RecordType>;
@@ -31,6 +31,12 @@ export default function PureTableApp<RecordType extends object = any>(
     const {rc_table_props} = props;
     const [columns, setColumns] = useState(initColumns());
 
+    const components = {
+        header: {
+            cell: ResizableTitle,
+        },
+    };
+
     function handleResize(index: number) {
         return (e: React.SyntheticEvent, {size}: ResizeCallbackData) => {
             const _columns = [...(columns || [])];
@@ -53,22 +59,16 @@ export default function PureTableApp<RecordType extends object = any>(
         });
     }
 
-    const components = {
-        header: {
-            cell: ResizableTitle,
-        },
-    };
+    const table_props = {
+        bordered: false,
+        size: 'small',
+        components,
+        scroll: {x: '100%'},
+        ...rc_table_props,
 
-    return (
-        <div style={{padding: 20}}>
-            <p>
-                <Button type={'primary'}>Antd 按钮</Button>
-            </p>
-            <Table
-                {...rc_table_props}
-                components={components}
-                columns={columns as any}
-            />
-        </div>
-    );
+        // 注意 columns 需要覆盖 rc_table_props 中的定义，所以需要放后面
+        columns,
+    } as TableProps<RecordType>;
+
+    return <Table {...table_props} />;
 }

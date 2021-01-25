@@ -2,42 +2,48 @@ import PureTable from './index';
 
 const columns = [
     {
-        title: 'Name',
+        title: '这是一个很长的字符串用来测试的',
         dataIndex: 'name',
         key: 'name',
-        width: 100,
+        fixed: 'left',
     },
     {
         title: 'Age',
         dataIndex: 'age',
         key: 'age',
-        width: 100,
     },
     {
         title: 'Address',
         dataIndex: 'address',
         key: 'address',
-        width: 200,
     },
     {
         title: 'Operations',
         dataIndex: '',
         key: 'operations',
+        fixed: 'right',
         render: () => {
             return '操作';
         },
     },
 ];
 
-const data = [
-    {name: 'Jack', age: 28, address: 'some where', key: '1'},
-    {name: 'Rose', age: 36, address: 'some where', key: '2'},
-];
+const data = [];
+for (let i = 0; i < 200; i++) {
+    data.push({
+        name:
+            'UserNameLongStringUserNameLongStringUserNameLongStringUserNameLongStringUserNameLongString' +
+            i,
+        age: i,
+        address: 'some where ' + i,
+        key: i.toString(),
+    });
+}
 
 new PureTable('#table-mount-point', {
     rc_table_props: {
         id: 'my-table',
         dataSource: data,
-        columns,
+        columns: columns as any,
     },
 });
