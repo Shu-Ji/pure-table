@@ -37,7 +37,7 @@ const data = [
 new PureTable('#table-mount-point', {
     rc_table_props: {
         id: 'my-table',
-        data,
+        dataSource: data,
         columns,
     },
 });

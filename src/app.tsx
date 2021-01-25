@@ -1,12 +1,13 @@
+import {TableProps} from 'antd/es/table';
 import {h} from 'preact';
 import {useState} from 'preact/hooks';
 
-import Table from 'rc-table';
-import {TableProps} from 'rc-table/es/Table';
 import * as React from 'react';
 import {Resizable, ResizableProps, ResizeCallbackData} from 'react-resizable';
 
 import 'react-resizable/css/styles.css';
+
+import {Button, Table} from './antd';
 
 import './style.less';
 
@@ -29,7 +30,7 @@ const ResizableTitle = (props: ResizableProps) => {
     );
 };
 
-export default function PureTableApp<RecordType = unknown>(
+export default function PureTableApp<RecordType extends object = any>(
     props: PureTableAppProps<RecordType>,
 ) {
     const {rc_table_props} = props;
@@ -64,11 +65,15 @@ export default function PureTableApp<RecordType = unknown>(
     };
 
     return (
-        <Table
-            {...rc_table_props}
-            components={components}
-            columns={columns as any}
-            prefixCls="pure-table"
-        />
+        <div style={{padding: 20}}>
+            <p>
+                <Button type={'primary'}>Antd 按钮</Button>
+            </p>
+            <Table
+                {...rc_table_props}
+                components={components}
+                columns={columns as any}
+            />
+        </div>
     );
 }

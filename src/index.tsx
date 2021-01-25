@@ -2,7 +2,7 @@ import {h, render} from 'preact';
 
 import PureTableApp, {PureTableAppProps} from './app';
 
-export default class PureTable<RecordType = unknown> {
+export default class PureTable<RecordType extends object = any> {
     constructor(el: string, rc_table_props: PureTableAppProps<RecordType>) {
         const _el = document.querySelector(el);
         if (_el) {
