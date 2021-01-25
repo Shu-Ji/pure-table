@@ -1,5 +1,6 @@
 import {h, render} from 'preact';
 
+import './style';
 import PureTableApp, {PureTableAppProps} from './app';
 
 export default class PureTable<RecordType extends object = any> {
@@ -8,7 +9,7 @@ export default class PureTable<RecordType extends object = any> {
         if (_el) {
             render(<PureTableApp {...rc_table_props} />, _el);
         } else {
-            console.error('el does not exist');
+            console.error(`el ${el} does not exist`);
         }
     }
 }

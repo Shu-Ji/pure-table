@@ -4,12 +4,7 @@ import {useState} from 'preact/hooks';
 
 import * as React from 'react';
 import {Resizable, ResizableProps, ResizeCallbackData} from 'react-resizable';
-
-import 'react-resizable/css/styles.css';
-
-import {Button, Table} from './antd';
-
-import './style.less';
+import {Button, Table} from 'antd';
 
 export interface PureTableAppProps<RecordType> {
     rc_table_props: TableProps<RecordType>;
